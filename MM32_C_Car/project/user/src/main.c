@@ -103,7 +103,7 @@ int main(void)
 		show_process(NULL);
 		image_process(188,120,0);
 				
-		motor_set_pid(kp,ki,kd1);
+//		motor_set_pid(kp,ki,kd1);
 		
 		servo_process();
 		
@@ -111,9 +111,9 @@ int main(void)
 		
 		
 
-//		ips200_show_int(96,160,encoder_data_l,4);
-//		ips200_show_int(96,176,encoder_data_r,4);
-//		ips200_show_int(96,192,prospect,4);
+		ips200_show_int(96,160,encoder_data_l,4);
+		ips200_show_int(96,176,encoder_data_r,4);
+		ips200_show_int(96,192,prospect,4);
 //		ips200_show_int(96,208,circle_flag,4);
 //		ips200_show_int(200,208,mid_mode,4);
 		

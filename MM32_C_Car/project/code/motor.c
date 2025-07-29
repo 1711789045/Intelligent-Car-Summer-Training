@@ -13,7 +13,7 @@ int16 encoder_data_r = 0;
 static PID_INCREMENT_TypeDef pid_left = {0};
 static PID_INCREMENT_TypeDef pid_right = {0};
 
-float motor_pid_kp = 0.6,motor_pid_ki = 0.060,motor_pid_kd = 0;
+float motor_pid_kp = 8.0,motor_pid_ki = 2.0,motor_pid_kd = 4.0;
 uint8 differential_mode = 0;
 
 void motor_init(void){
@@ -76,17 +76,19 @@ void motor_setspeed(int16 target, float current_l, float current_r,uint8 differe
                                  SPEED_LIMIT, motor_pid_kp, motor_pid_ki, motor_pid_kd);
 	}
 	if(differential_mode){
+		float err = final_mid_line - IMAGE_W/2;
+		float k = func_limit_ab((func_abs(err)-20)/10.0,0,1.0);
 		if(final_mid_line - IMAGE_W/2 >20){
-			speed_r = pid_increment(&pid_right,target+ dif_speed_reduce, current_r, 
+			speed_r = pid_increment(&pid_right,target+ (int16)(dif_speed_reduce*k), current_r, 
                                  SPEED_LIMIT, motor_pid_kp, motor_pid_ki, motor_pid_kd);
-			speed_l = pid_increment(&pid_left, target+ dif_speed_plus, current_l, 
+			speed_l = pid_increment(&pid_left, target+  (int16)(dif_speed_plus*k), current_l, 
                                  SPEED_LIMIT, motor_pid_kp, motor_pid_ki, motor_pid_kd);
 		}
 		else if(final_mid_line - IMAGE_W/2 <-20){
-			speed_r = pid_increment(&pid_right,target+ dif_speed_plus, current_r, 
+			speed_r = pid_increment(&pid_right,target+ (int16)(dif_speed_plus*k), current_r, 
                                  SPEED_LIMIT, motor_pid_kp, motor_pid_ki, motor_pid_kd);
 		
-			speed_l = pid_increment(&pid_left, target+ dif_speed_reduce, current_l, 
+			speed_l = pid_increment(&pid_left, target+ (int16)(dif_speed_reduce*k), current_l, 
                                  SPEED_LIMIT, motor_pid_kp, motor_pid_ki, motor_pid_kd);
 		}
 		else{
