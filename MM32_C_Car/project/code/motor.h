@@ -11,7 +11,7 @@
 #define MOTOR_L_DIR             (A2)
 #define MOTOR_R_DIR             (A0)
 
-#define SPEED_LIMIT             4000           //速度上限
+#define SPEED_LIMIT             6000           //速度上限
 
 extern uint8 stop_flag;
 extern uint8 differential_mode;

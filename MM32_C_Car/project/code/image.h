@@ -43,6 +43,9 @@ extern uint8 if_circle;                     //1为启用圆环，0为关闭圆环
 extern uint8 mid_weight_1[IMAGE_H];
 extern uint8 mid_weight_2[IMAGE_H];
 extern uint8 mid_weight_3[IMAGE_H];
+extern uint8 mid_weight_4[IMAGE_H];
+extern uint8 mid_weight_5[IMAGE_H];
+
 
 extern uint8 mid_weight[IMAGE_H];
 

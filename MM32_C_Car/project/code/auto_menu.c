@@ -708,6 +708,46 @@ void store_3_300(){
     }
 }
 
+void store_4_350(){
+	if(IS_OK){
+		speed = 350;
+		kp = 0.012;
+		kp_min = 0.35;
+		kd1 = 0;
+		kd2 = 0.50;
+		differential_mode = 1;
+		dif_speed_plus = 50,dif_speed_reduce = -280;
+
+		if_circle = 0;
+
+		for(int i = 0;i<IMAGE_H;i++){
+			mid_weight[i] = mid_weight_4[i];
+		}
+		showstr(0,(SON_NUM+1)*16,"350 0.7 0 0.50 weight2");;
+
+    }
+}
+
+void store_5_400(){
+	if(IS_OK){
+		speed = 400;
+		kp = 0.012;
+		kp_min = 0.35;
+		kd1 = 0;
+		kd2 = 0.50;
+		differential_mode = 1;
+		dif_speed_plus = 50,dif_speed_reduce = -280;
+
+		if_circle = 0;
+
+		for(int i = 0;i<IMAGE_H;i++){
+			mid_weight[i] = mid_weight_5[i];
+		}
+		showstr(0,(SON_NUM+1)*16,"400 0.7 0 0.50 weight5");;
+
+    }
+}
+
 void NULL_FUN(){
     
 }
@@ -776,9 +816,12 @@ void FUN_INIT(){
 	fun_init(circle,"<circle>");
 	fun_init(slow_down,"<slow_down>");
 	fun_init(speed_policy,"<sp_policy>");
-	fun_init(store_1_200,"<speed2000>");
-	fun_init(store_2_250,"<speed2500>");
-	fun_init(store_3_300,"<speed3000>");
+	fun_init(store_1_200,"<speed200>");
+	fun_init(store_2_250,"<speed250>");
+	fun_init(store_3_300,"<speed300>");
+	fun_init(store_4_350,"<speed350>");
+	fun_init(store_5_400,"<speed400>");
+
 
 
 }

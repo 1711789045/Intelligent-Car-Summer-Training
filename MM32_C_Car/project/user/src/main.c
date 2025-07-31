@@ -40,6 +40,7 @@
 #include "image.h"
 #include "servo.h"
 #include "beep.h"
+#include "imu.h"
 // 打开新的工程或者工程移动了位置务必执行以下操作
 // 第一步 关闭上面所有打开的文件
 // 第二步 project->clean  等待下方进度条走完
@@ -76,6 +77,7 @@ int main(void)
 	imu963ra_init();
 	
 	wireless_uart_init();
+	
 	 
 	pit_ms_init(PIT6, 100);                                                      // 初始化 PIT 为周期中断 100ms 周期
     interrupt_set_priority(PIT6_PRIORITY, 0); 
@@ -109,11 +111,12 @@ int main(void)
 		
 		motor_process();
 		
-		
+//		printf("%f,%f,%f\n", pitch, roll, yaw);	//发送到vofa（调参用）
 
-		ips200_show_int(96,160,encoder_data_l,4);
-		ips200_show_int(96,176,encoder_data_r,4);
-		ips200_show_int(96,192,prospect,4);
+
+//		ips200_show_int(96,160,encoder_data_l,4);
+//		ips200_show_int(96,176,encoder_data_r,4);
+//		ips200_show_int(96,192,prospect,4);
 //		ips200_show_int(96,208,circle_flag,4);
 //		ips200_show_int(200,208,mid_mode,4);
 		
@@ -148,6 +151,7 @@ void pit7_handler (void)
 		circle_time++;
 		
 		//20ms
+//		ComputeEulerAngles() ;
 		count_10ms = 0;
 	}
 	
@@ -159,7 +163,7 @@ void pit7_handler (void)
 	
     encoder_clear_count(ENCODER_L);                                       // 清空编码器计数
     encoder_clear_count(ENCODER_R);                               // 清空编码器计数
-	printf("%d,%d,%d\n", speed, encoder_data_l, encoder_data_r);	//发送到vofa（调参用）
+//	printf("%d,%d,%d\n", speed, encoder_data_l, encoder_data_r);	//发送到vofa（调参用）
 	
 	
 }

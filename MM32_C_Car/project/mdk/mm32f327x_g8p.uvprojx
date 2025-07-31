@@ -490,6 +490,16 @@
               <FileType>5</FileType>
               <FilePath>..\code\beep.h</FilePath>
             </File>
+            <File>
+              <FileName>imu.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\code\imu.c</FilePath>
+            </File>
+            <File>
+              <FileName>imu.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\code\imu.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
