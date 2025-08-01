@@ -111,7 +111,8 @@ int main(void)
 		
 		motor_process();
 		
-//		printf("%f,%f,%f\n", pitch, roll, yaw);	//发送到vofa（调参用）
+		printf("%f\n", filtering_angle);	//发送到vofa（调参用）
+//		printf("%d,%d,%d\n", gx,gy,gz);	//发送到vofa（调参用）
 
 
 //		ips200_show_int(96,160,encoder_data_l,4);
@@ -151,12 +152,12 @@ void pit7_handler (void)
 		circle_time++;
 		
 		//20ms
-//		ComputeEulerAngles() ;
 		count_10ms = 0;
 	}
 	
 	
 	//10ms
+	first_order_complementary_filtering();
 	motor_f = 1;
 	encoder_data_l = encoder_get_count(ENCODER_L);                  // 获取编码器计数
     encoder_data_r = 0-encoder_get_count(ENCODER_R);                          // 获取编码器计数

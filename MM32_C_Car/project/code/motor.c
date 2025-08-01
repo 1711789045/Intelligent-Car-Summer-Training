@@ -77,14 +77,16 @@ void motor_setspeed(int16 target, float current_l, float current_r,uint8 differe
 	}
 	if(differential_mode){
 		float err = final_mid_line - IMAGE_W/2;
-		float k = func_limit_ab((func_abs(err)-20)/10.0,0,1.0);
-		if(final_mid_line - IMAGE_W/2 >20){
+//		float k = func_limit_ab((func_abs(err)-20)/10.0,0,1.0);
+		float k = func_limit_ab((func_abs(err)-10),0,100);
+
+		if(final_mid_line - IMAGE_W/2 >10){
 			speed_r = pid_increment(&pid_right,target+ (int16)(dif_speed_reduce*k), current_r, 
                                  SPEED_LIMIT, motor_pid_kp, motor_pid_ki, motor_pid_kd);
 			speed_l = pid_increment(&pid_left, target+  (int16)(dif_speed_plus*k), current_l, 
                                  SPEED_LIMIT, motor_pid_kp, motor_pid_ki, motor_pid_kd);
 		}
-		else if(final_mid_line - IMAGE_W/2 <-20){
+		else if(final_mid_line - IMAGE_W/2 <-10){
 			speed_r = pid_increment(&pid_right,target+ (int16)(dif_speed_plus*k), current_r, 
                                  SPEED_LIMIT, motor_pid_kp, motor_pid_ki, motor_pid_kd);
 		

@@ -1,10 +1,20 @@
 #ifndef __IMU_H__
 #define __IMU_H__
 
-#define RtA (57.2957795f)  // 弧度转角度，180/π ≈ 57.2957795
-#define Ki  0.005f         // 积分系数
-#define DT  0.010f          // 计算周期的一半，单位s
-void ComputeEulerAngles(void) ;
-extern  float pitch ,roll,yaw;
+#include "zf_common_typedef.h"
+#define gx_error -5
+#define gy_error 8
+#define gz_error 6
+#define machine_mid 0//机械中值
+extern float roll,roll_offset,yaw;
+extern float filtering_angle;
+extern float yaw;
+extern int16_t gx   ;
+extern int16_t gy   ;
+extern int16_t gz   ;
+extern int16_t ax   ;
+extern int16_t ay   ;
+extern int16_t az   ;
+void first_order_complementary_filtering(void);
 
 #endif

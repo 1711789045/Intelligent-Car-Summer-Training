@@ -696,7 +696,7 @@ void store_3_300(){
 		kd1 = 0;
 		kd2 = 0.50;
 		differential_mode = 1;
-		dif_speed_plus = 40,dif_speed_reduce = -130;
+		dif_speed_plus = 3.0,dif_speed_reduce = -7.0;
 
 		if_circle = 0;
 
@@ -716,7 +716,7 @@ void store_4_350(){
 		kd1 = 0;
 		kd2 = 0.50;
 		differential_mode = 1;
-		dif_speed_plus = 50,dif_speed_reduce = -280;
+		dif_speed_plus = 3.0,dif_speed_reduce = -7.0;
 
 		if_circle = 0;
 
@@ -788,7 +788,7 @@ void start(){
 
 float kp= 0.35,ki = 0,kd1 = 0.56,kd2 = 0,kp_min = 0.35;
 int speed=200;
-int dif_speed_plus = 0,dif_speed_reduce = -40;
+float dif_speed_plus = 0,dif_speed_reduce = -10;
 
 uint16 test_d=20;
 uint32 test_e=32;
@@ -800,8 +800,8 @@ void UNIT_SET(){
     unit_param_set(&kd1,TYPE_FLOAT,0.01  ,1  ,3,NORMAL_PAR,"kd1");
 	unit_param_set(&kd2,TYPE_FLOAT,0.001  ,1  ,3,NORMAL_PAR,"kd2");
 	unit_param_set(&kp_min,TYPE_FLOAT ,0.01  ,1  ,3,NORMAL_PAR,"kp_min");
-	unit_param_set(&dif_speed_plus,TYPE_INT,10    ,4 ,0,NORMAL_PAR,"dif_plus");
-    unit_param_set(&dif_speed_reduce,TYPE_INT,10    ,4 ,0,NORMAL_PAR,"dif_reduce");
+	unit_param_set(&dif_speed_plus,TYPE_FLOAT,0.1    ,2,2,NORMAL_PAR,"dif_plus");
+    unit_param_set(&dif_speed_reduce,TYPE_FLOAT,0.1    ,2 ,2,NORMAL_PAR,"dif_reduce");
 
     unit_param_set(&speed,TYPE_INT,10    ,5 ,0,NORMAL_PAR,"speed");
 
