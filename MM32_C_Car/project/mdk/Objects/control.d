@@ -1,4 +1,4 @@
-./objects/main.o: ..\USER\src\main.c \
+./objects/control.o: ..\code\control.c \
   ..\..\libraries\zf_common\zf_common_headfile.h \
   D:\keil5\ARM\ARMCLANG\include\stdio.h \
   D:\keil5\ARM\ARMCLANG\include\stdint.h \
@@ -87,6 +87,6 @@
   ..\..\libraries\zf_device\zf_device_wifi_uart.h \
   ..\..\libraries\zf_device\zf_device_wireless_uart.h \
   ..\..\libraries\components\fatfs\source\ffconf.h \
-  ..\..\libraries\components\fatfs\source\ff.h ..\code\auto_menu.h \
-  ..\code\motor.h ..\code\encoder.h ..\code\image.h ..\code\servo.h \
-  ..\code\beep.h ..\code\imu.h ..\code\control.h
+  ..\..\libraries\components\fatfs\source\ff.h ..\code\control.h \
+  ..\code\motor.h ..\code\servo.h ..\code\auto_menu.h ..\code\imu.h \
+  ..\code\beep.h

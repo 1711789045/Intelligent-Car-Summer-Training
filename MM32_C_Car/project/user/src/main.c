@@ -41,6 +41,7 @@
 #include "servo.h"
 #include "beep.h"
 #include "imu.h"
+#include "control.h"
 // 打开新的工程或者工程移动了位置务必执行以下操作
 // 第一步 关闭上面所有打开的文件
 // 第二步 project->clean  等待下方进度条走完
@@ -107,17 +108,19 @@ int main(void)
 				
 //		motor_set_pid(kp,ki,kd1);
 		
-		servo_process();
+		direction_control();
 		
-		motor_process();
+//		motor_process();
+//		
+//		servo_process();
 		
-		printf("%f\n", filtering_angle);	//发送到vofa（调参用）
+//		printf("%f\n", filtering_angle);	//发送到vofa（调参用）
 //		printf("%d,%d,%d\n", gx,gy,gz);	//发送到vofa（调参用）
 
 
 //		ips200_show_int(96,160,encoder_data_l,4);
 //		ips200_show_int(96,176,encoder_data_r,4);
-//		ips200_show_int(96,192,prospect,4);
+//		ips200_show_int(96,192,speed,4);
 //		ips200_show_int(96,208,circle_flag,4);
 //		ips200_show_int(200,208,mid_mode,4);
 		

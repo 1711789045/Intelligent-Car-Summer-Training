@@ -629,7 +629,7 @@ void speed_policy(){
 }
 void store_1_200(){
 	if(IS_OK){
-		speed = 200;
+		basic_speed = 200;
 		kp = 0.350;
 		kd1 = 0.60;
 		kd2 = 0;
@@ -638,13 +638,13 @@ void store_1_200(){
 		for(int i = 0;i<IMAGE_H;i++){
 			mid_weight[i] = mid_weight_1[i];
 		}
-		showstr(0,(SON_NUM+1)*16,"200 0.350 0.60 0 weight1");
+		showstr(0,(SON_NUM+1)*16,"200  weight1");
 
     }
 }
 
 void get_store_1(){
-	speed = 200;
+	basic_speed = 200;
 	kp = 0.350;
 	kd1 = 0.60;
 	kd2 = 0;
@@ -657,7 +657,7 @@ void get_store_1(){
 
 void store_2_250(){
 	if(IS_OK){
-		speed = 250;
+		basic_speed = 250;
 		kp = 0.012;
 		kp_min = 0.35;
 		kd1 = 0;
@@ -670,14 +670,14 @@ void store_2_250(){
 		for(int i = 0;i<IMAGE_H;i++){
 			mid_weight[i] = mid_weight_2[i];
 		}
-		showstr(0,(SON_NUM+1)*16,"250 0.012 0 0.50 weight2");
+		showstr(0,(SON_NUM+1)*16,"250  weight2");
 
     }
 }
 
 
 void get_store_2(){
-	speed = 250;
+	basic_speed = 250;
 	kp = 0.70;
 	kd1 = 0;
 	kd2 = 0.50;
@@ -690,60 +690,60 @@ void get_store_2(){
 
 void store_3_300(){
 	if(IS_OK){
-		speed = 300;
-		kp = 0.012;
+		basic_speed = 300;
+		kp = 0.006;
 		kp_min = 0.35;
 		kd1 = 0;
-		kd2 = 0.50;
+		kd2 = 0.35;
 		differential_mode = 1;
-		dif_speed_plus = 3.0,dif_speed_reduce = -7.0;
+		dif_speed_plus = 3.0,dif_speed_reduce = -5.0;
 
 		if_circle = 0;
 
 		for(int i = 0;i<IMAGE_H;i++){
 			mid_weight[i] = mid_weight_3[i];
 		}
-		showstr(0,(SON_NUM+1)*16,"250 0.7 0 0.50 weight2");;
+		showstr(0,(SON_NUM+1)*16,"300  weight3");
 
     }
 }
 
 void store_4_350(){
 	if(IS_OK){
-		speed = 350;
+		basic_speed = 350;
 		kp = 0.012;
 		kp_min = 0.35;
 		kd1 = 0;
 		kd2 = 0.50;
 		differential_mode = 1;
-		dif_speed_plus = 3.0,dif_speed_reduce = -7.0;
+		dif_speed_plus = 1.0,dif_speed_reduce = -7.0;
 
 		if_circle = 0;
 
 		for(int i = 0;i<IMAGE_H;i++){
 			mid_weight[i] = mid_weight_4[i];
 		}
-		showstr(0,(SON_NUM+1)*16,"350 0.7 0 0.50 weight2");;
+		showstr(0,(SON_NUM+1)*16,"350  weight4");
 
     }
 }
 
 void store_5_400(){
 	if(IS_OK){
-		speed = 400;
+		basic_speed = 400;
 		kp = 0.012;
 		kp_min = 0.35;
 		kd1 = 0;
 		kd2 = 0.50;
 		differential_mode = 1;
-		dif_speed_plus = 50,dif_speed_reduce = -280;
+		dif_speed_plus = 1.0,dif_speed_reduce = -7.0;
 
 		if_circle = 0;
 
 		for(int i = 0;i<IMAGE_H;i++){
 			mid_weight[i] = mid_weight_5[i];
 		}
-		showstr(0,(SON_NUM+1)*16,"400 0.7 0 0.50 weight5");;
+		showstr(0,(SON_NUM+1)*16,"400  weight5");
 
     }
 }
@@ -787,7 +787,7 @@ void start(){
 }
 
 float kp= 0.35,ki = 0,kd1 = 0.56,kd2 = 0,kp_min = 0.35;
-int speed=200;
+int basic_speed=0;
 float dif_speed_plus = 0,dif_speed_reduce = -10;
 
 uint16 test_d=20;
@@ -803,7 +803,7 @@ void UNIT_SET(){
 	unit_param_set(&dif_speed_plus,TYPE_FLOAT,0.1    ,2,2,NORMAL_PAR,"dif_plus");
     unit_param_set(&dif_speed_reduce,TYPE_FLOAT,0.1    ,2 ,2,NORMAL_PAR,"dif_reduce");
 
-    unit_param_set(&speed,TYPE_INT,10    ,5 ,0,NORMAL_PAR,"speed");
+    unit_param_set(&basic_speed,TYPE_INT,10    ,5 ,0,NORMAL_PAR,"b_speed");
 
 }
 

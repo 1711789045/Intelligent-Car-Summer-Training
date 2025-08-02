@@ -3,6 +3,7 @@
 #include "pid.h"
 #include "auto_menu.h"
 #include "image.h"
+#include "control.h"
 //占空比最大值是10000
 
 uint8 stop_flag = 0;

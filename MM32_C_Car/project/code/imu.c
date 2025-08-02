@@ -36,11 +36,11 @@ void first_order_complementary_filtering(void)
     az = imu963ra_acc_z;
 
     // 陀螺仪数据处理：去除小值噪声
-    if (abs(gx) < 6)
+    if (abs(gx) < 25)
         gx = 0;
-    if (abs(gy) < 6)
+    if (abs(gy) < 25)
         gy = 0;
-    if (abs(gz) < 6)
+    if (abs(gz) < 25)
         gz = 0;
 
     float gyro_temp;
